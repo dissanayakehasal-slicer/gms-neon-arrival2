@@ -1,0 +1,30 @@
+name = "gms-neon-arrival2"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+main = "dist/index.js"
+
+[env.production]
+name = "gms-neon-arrival-prod"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gms_countdown"
+database_id = "072e4a8c-cf31-4dda-ad88-f4424ada9f87"
+migrations_dir = "migrations"
+
+[triggers.crons]
+crons = []
+
+[build]
+cwd = "."
+command = "bun run build"
+watch_paths = ["src/**/*.ts", "src/**/*.tsx"]
+
+[build.upload]
+format = "service-worker"
+
+[observability]
+enabled = true
